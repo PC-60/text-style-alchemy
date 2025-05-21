@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
-import { Copy } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import FormatCard from '@/components/FormatCard';
 
@@ -24,27 +23,25 @@ const Index = () => {
       return;
     }
     
-    // Create 6 different formatted versions
+    // Create 6 distinctly different formatted versions
     setFormattedResults([
-      // Bold formatting with asterisks (markdown style)
-      inputText.split(' ').map(word => `**${word}**`).join(' '),
+      // Bold formatting with custom prefix
+      `🔵 **${inputText.toUpperCase()}** 🔵`,
       
-      // Italic formatting
-      `_${inputText}_`,
+      // Aesthetic format with special characters
+      `✧･ﾟ: *✧･ﾟ:* ${inputText} *:･ﾟ✧*:･ﾟ✧`,
       
-      // Mixed case (alternating)
-      inputText.split('').map((char, i) => 
-        i % 2 === 0 ? char.toUpperCase() : char.toLowerCase()
-      ).join(''),
+      // Code block style
+      `\`\`\`\n${inputText}\n\`\`\``,
       
-      // All uppercase with spacing
-      inputText.toUpperCase().split('').join(' '),
+      // Spaced out with arrows
+      `→ ${inputText.split('').join(' ')} ←`,
       
-      // With emojis
-      `✨ ${inputText} ✨`,
+      // Quoted with emoji decoration
+      `💬 "${inputText}" 💬`,
       
-      // Minimalist with special characters
-      `| ${inputText.toLowerCase()} |`
+      // Reverse text
+      inputText.split('').reverse().join('')
     ]);
   };
 
@@ -75,34 +72,34 @@ const Index = () => {
         {formattedResults.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <FormatCard 
-              title="Bold Style" 
+              title="Bold Highlight" 
               text={formattedResults[0]} 
-              description="Adds bold emphasis to each word"
+              description="Uppercase with bold emphasis and blue dots"
             />
             <FormatCard 
-              title="Italic Style" 
+              title="Aesthetic Stars" 
               text={formattedResults[1]} 
-              description="Elegant italic formatting"
+              description="Decorative star pattern formatting"
             />
             <FormatCard 
-              title="Mixed Case" 
+              title="Code Block" 
               text={formattedResults[2]} 
-              description="Alternating case for each character"
+              description="Formatted as a code snippet"
             />
             <FormatCard 
-              title="Spaced Uppercase" 
+              title="Spaced Arrows" 
               text={formattedResults[3]} 
-              description="All capitals with spacing"
+              description="Letters spaced with arrow indicators"
             />
             <FormatCard 
-              title="With Sparkles" 
+              title="Quote Style" 
               text={formattedResults[4]} 
-              description="Adds decorative emoji elements"
+              description="Text as a quoted message with speech bubbles"
             />
             <FormatCard 
-              title="Minimalist" 
+              title="Reversed" 
               text={formattedResults[5]} 
-              description="Clean, simple formatting"
+              description="Text completely reversed"
             />
           </div>
         )}
