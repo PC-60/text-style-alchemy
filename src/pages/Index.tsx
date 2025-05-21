@@ -23,25 +23,25 @@ const Index = () => {
       return;
     }
     
-    // Create 6 distinctly different formatted versions
+    // Create 6 distinctly different formatted versions that are readable
     setFormattedResults([
-      // Bold formatting with custom prefix
-      `🔵 **${inputText.toUpperCase()}** 🔵`,
+      // Simple bold formatting
+      `*${inputText}*`,
       
-      // Aesthetic format with special characters
-      `✧･ﾟ: *✧･ﾟ:* ${inputText} *:･ﾟ✧*:･ﾟ✧`,
+      // Plain text with quotes
+      `"${inputText}"`,
       
-      // Code block style
-      `\`\`\`\n${inputText}\n\`\`\``,
+      // ALL CAPS for emphasis
+      inputText.toUpperCase(),
       
-      // Spaced out with arrows
-      `→ ${inputText.split('').join(' ')} ←`,
+      // Dash separated for clarity
+      `- ${inputText} -`,
       
-      // Quoted with emoji decoration
-      `💬 "${inputText}" 💬`,
+      // Parentheses for formal tone
+      `(${inputText})`,
       
-      // Reverse text
-      inputText.split('').reverse().join('')
+      // With asterisks for highlighting
+      `*** ${inputText} ***`
     ]);
   };
 
@@ -72,34 +72,34 @@ const Index = () => {
         {formattedResults.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <FormatCard 
-              title="Bold Highlight" 
+              title="Bold Text" 
               text={formattedResults[0]} 
-              description="Uppercase with bold emphasis and blue dots"
+              description="Simple asterisks for bold emphasis"
             />
             <FormatCard 
-              title="Aesthetic Stars" 
+              title="Quotation" 
               text={formattedResults[1]} 
-              description="Decorative star pattern formatting"
+              description="Text in quotation marks"
             />
             <FormatCard 
-              title="Code Block" 
+              title="ALL CAPS" 
               text={formattedResults[2]} 
-              description="Formatted as a code snippet"
+              description="Uppercase for emphasis"
             />
             <FormatCard 
-              title="Spaced Arrows" 
+              title="Dash Format" 
               text={formattedResults[3]} 
-              description="Letters spaced with arrow indicators"
+              description="Text with dash separators"
             />
             <FormatCard 
-              title="Quote Style" 
+              title="Parentheses" 
               text={formattedResults[4]} 
-              description="Text as a quoted message with speech bubbles"
+              description="Text in parentheses for formal tone"
             />
             <FormatCard 
-              title="Reversed" 
+              title="Triple Star" 
               text={formattedResults[5]} 
-              description="Text completely reversed"
+              description="Text with triple asterisks for highlighting"
             />
           </div>
         )}
